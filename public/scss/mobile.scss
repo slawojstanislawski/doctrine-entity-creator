@@ -1,0 +1,97 @@
+@media (max-width: $screen-sm) {
+
+    h1 {
+    text-align: center;
+  }
+
+  .col-sm-3 {
+    padding-left:15px;padding-right: 15px;
+  }
+
+  #entityForm {
+    width: 100%;
+
+    div[class^="col-"] {
+      padding: 0 !important;
+      width:100%;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-right: 0px;
+      margin-left: 0px;
+
+      label.required:after {
+        top:1px;
+      }
+
+    }
+
+    label {
+      width: 100%;
+      text-align: center;
+      padding: 0px 0px 10px 0px;
+    }
+    
+    input, select {
+      text-align: center;
+    }
+
+    input[type="checkbox"] {
+      width: 100%;
+    }
+
+    .columnsInput {
+      font-size: 13px;
+    }
+
+    .indexContainer {
+
+      .col-sm-2 {
+        width: auto;
+      }
+
+      .col-xs-12 {
+        width: 100%;
+        text-align: center;
+      }
+
+      .indexPlusButton, .indexMinusButton {
+        margin-top: 15px;
+      }
+
+    }
+
+    fieldset {
+
+      legend {
+        margin-bottom: 10px;
+      }
+
+      .removePropertyButton {
+        float: none;
+        margin-bottom: 10px;
+      }
+
+    }
+
+    .submitButtonsDiv {
+      text-align: center;
+    }
+
+    #addEntityProperty {
+      width: 132px;
+      font-size:14px;
+      display: block;
+      margin:0 auto 10px auto;
+    }
+
+    input[type="submit"], #populateForm {
+      display: inline-block;
+      width: 100px;
+      font-size:14px;
+    }
+
+  }
+
+}

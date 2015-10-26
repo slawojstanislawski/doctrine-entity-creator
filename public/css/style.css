@@ -1,0 +1,125 @@
+body {
+  background: #ffdca2;
+}
+
+h1 {
+  margin: 30px 0 30px 0;
+  border-bottom: 1px solid #ac264a;
+}
+
+.col-sm-3 {
+  padding: 0;
+  padding: 0;
+}
+
+#result, #result pre {
+  background: #52a367;
+  font-size: 15px;
+  font-family: Verdana;
+  color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+#result {
+  padding: 0px;
+}
+
+#entityForm {
+  width: 600px;
+}
+#entityForm label {
+  height: 20px;
+  line-height: 20px;
+  padding: 6px;
+  text-align: right;
+  width: 100%;
+}
+#entityForm input[type="checkbox"] {
+  width: 10px;
+  height: 25px;
+  margin: 5px 0;
+}
+#entityForm .form-group label.required:after {
+  color: #d00;
+  content: "*";
+  position: absolute;
+  margin-left: 6px;
+  top: 6px;
+  font-size: 1.1em;
+}
+#entityForm .indexContainer .col-sm-7 {
+  padding-right: 15px;
+  margin-right: 5px;
+}
+#entityForm .indexContainer .col-sm-2 {
+  width: 84px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 89px;
+}
+#entityForm .indexContainer .col-sm-2 button {
+  display: inline-block;
+  vertical-align: top;
+  border-color: transparent;
+}
+#entityForm .indexContainer .col-sm-2 .indexPlusButton {
+  background: #a48462;
+  transition: all 0.2s ease-in;
+}
+#entityForm .indexContainer .col-sm-2 .indexPlusButton:hover {
+  background: #703415;
+}
+#entityForm .indexContainer .col-sm-2 .indexPlusButton .glyphicon-plus {
+  color: #ffdca2;
+}
+#entityForm .indexContainer .col-sm-2 .indexMinusButton {
+  background: #a48462;
+  transition: all 0.2s ease-in;
+}
+#entityForm .indexContainer .col-sm-2 .indexMinusButton:hover {
+  background: #703415;
+}
+#entityForm .indexContainer .col-sm-2 .glyphicon-minus {
+  color: #ffdca2;
+}
+#entityForm fieldset legend {
+  border-color: #937656;
+}
+#entityForm fieldset .form-group {
+  margin-left: 0px;
+}
+#entityForm fieldset .form-group .asteriskSpan {
+  color: red;
+  font-size: 1.1em;
+}
+#entityForm fieldset .removePropertyButtonContainer {
+  padding-right: 0px;
+}
+#entityForm fieldset .removePropertyButton {
+  background: #a48462;
+  float: right;
+  transition: all 0.2s ease-in;
+}
+#entityForm fieldset .removePropertyButton:hover {
+  background: #a5001a;
+}
+#entityForm fieldset .removePropertyButton .glyphicon-remove {
+  color: transparent;
+}
+#entityForm #addPropertyContainer {
+  margin-top: 20px;
+}
+#entityForm #addEntityProperty {
+  width: 154px;
+  font-size: 16px;
+}
+#entityForm input[type="submit"] {
+  display: inline-block;
+  width: 139px;
+  font-size: 15px;
+  font-weight: bold;
+}
+#entityForm .popover {
+  min-width: 180px;
+}

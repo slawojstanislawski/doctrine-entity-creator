@@ -1,0 +1,157 @@
+* {
+  outline: none;
+}
+body {
+  background: #ffdca2;
+}
+
+#ajaxLoading {
+  width:50px;
+  height: 60px;
+  margin: 0 auto;
+  display: none;
+  img {
+    display: block;
+    width: 32px;
+    height: 32px;
+    line-height: 50px;
+    margin: 0 auto;
+    vertical-align: middle;
+  }
+}
+
+h1 {
+  margin: 30px 0 30px 0;
+  text-align: center;
+  border-bottom: 1px solid #ac264a;
+}
+
+.alert {
+  display: none;
+}
+
+.col-sm-3 {
+  padding: 0;
+}
+
+#result, #result pre {
+  background: #52a367;
+  color: white;
+  font-size: 15px;
+  font-family: Verdana;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: none !important;
+}
+
+#result {
+  padding: 0px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px grey;
+}
+
+#entityForm {
+  width: 600px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  label {
+    height: 20px;
+    line-height: 20px;
+    padding: 6px;
+    text-align: right;
+    width: 100%;
+  }
+  input[type="checkbox"] {
+    width: 10px;
+    height: 25px;
+    margin: 5px 0;
+  }
+  .form-group label.required:after {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 6px;
+    top: 6px;
+    font-size: 1.1em;
+  }
+  .indexContainer {
+    .col-sm-7 {
+      margin-right: 5px;
+    }
+    .col-sm-2 {
+      padding-left: 0px;
+      padding-right: 0px;
+      width: 89px;
+      button {
+        display: inline-block;
+        vertical-align: top;
+        border-color: transparent;
+      }
+      .indexPlusButton {
+        background: #a48462;
+        transition: all 0.2s ease-in;
+        &:hover {
+          background: #703415;
+        }
+        .glyphicon-plus {
+          color: #ffdca2;
+        }
+      }
+      .indexMinusButton {
+        background: #a48462;
+        transition: all 0.2s ease-in;
+        &:hover {
+          background: #703415;
+        }
+      }
+      .glyphicon-minus {
+        color: #ffdca2;
+      }
+    }
+  }
+  fieldset {
+    legend {
+      border-color: #937656;
+    }
+    .form-group {
+      margin-left: 0px;
+      .asteriskSpan {
+        color: red;
+        font-size: 1.1em;
+      }
+    }
+    .removePropertyButtonContainer {
+      padding-right: 0px;
+    }
+    .removePropertyButton {
+      background: #a48462;
+      float: right;
+      transition: all 0.2s ease-in;
+      &:hover {
+        background: #a5001a;
+      }
+      .glyphicon-remove {
+        color: #ffdca2;
+      }
+    }
+  }
+  #addPropertyContainer {
+    margin-top: 20px;
+  }
+  #addEntityProperty {
+    width: 154px;
+    @include inputTypeSubmitStyles;
+  }
+  input[type="submit"], #populateForm {
+    display: inline-block;
+    width: 139px;
+    @include inputTypeSubmitStyles;
+  }
+  .submitButtonsDiv {
+    text-align: right;
+  }
+  .popover {
+    min-width: 180px;
+  }
+}
+
