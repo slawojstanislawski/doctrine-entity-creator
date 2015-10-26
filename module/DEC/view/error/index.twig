@@ -1,0 +1,76 @@
+{% extends 'layout/layout.twig' %}
+
+{% block content %}
+    <div class="onebody content">
+        <div class="wrapper">
+            <div id="content" class="legalWhite" style="height:600px;">
+                <div class="headingBar">
+                    <h1>
+                        Error
+                    </h1>
+                </div>
+                <!--<p style="margin-left:27px;">{{ exception.getMessage() }}</p>-->
+
+                <h1>{{ translate('An error occurred') }}</h1>
+                <h2>{{ message }}</h2>
+                {% if display_exceptions is defined and display_exceptions %}
+
+                    {% if exception is defined %}
+                        <hr/>
+                        <h2>{{ translate('Additional information') }}:</h2>
+                        <h3>{# get_class(exception) #}</h3>
+                        <dl>
+                            <dt>{{ translate('File') }}:</dt>
+                            <dd>
+                                <pre class="prettyprint linenums">{{ exception.getFile() }}:{{ exception.getLine() }}</pre>
+                            </dd>
+                            <dt>{{ translate('Message') }}:</dt>
+                            <dd>
+                                <pre class="prettyprint linenums">{{ exception.getMessage() }}</pre>
+                            </dd>
+                            <dt>{{ translate('Stack trace') }}:</dt>
+                            <dd>
+                                <pre class="prettyprint linenums">{{ exception.getTraceAsString() }}</pre>
+                            </dd>
+                        </dl>
+                        {% set e = exception.getPrevious() %}
+                        {% if e %}
+                            <hr/>
+                            <h2>{{ translate('Previous exceptions') }}:</h2>
+                            <ul class="unstyled">
+                                {% for i in 0..100 %}
+                                    {% if e %}
+                                        <li>
+                                            <h3>{# get_class(e) #}</h3>
+                                            <dl>
+                                                <dt>{{ translate('File') }}:</dt>
+                                                <dd>
+                                                    <pre class="prettyprint linenums">{{ e.getFile() }}:{{ e.getLine() }}</pre>
+                                                </dd>
+                                                <dt>{{ translate('Message') }}:</dt>
+                                                <dd>
+                                                    <pre class="prettyprint linenums">{{ e.getMessage() }}</pre>
+                                                </dd>
+                                                <dt>{{ translate('Stack trace') }}:</dt>
+                                                <dd>
+                                                    <pre class="prettyprint linenums">{{ e.getTraceAsString() }}</pre>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        {% set e = e.getPrevious() %}
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                    {% else %}
+
+                        <h3>{{ translate('No Exception available') }}</h3>
+
+                    {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

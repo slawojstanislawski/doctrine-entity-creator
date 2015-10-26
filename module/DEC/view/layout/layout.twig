@@ -1,0 +1,27 @@
+{{ doctype() }}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {{ headTitle("Doctrine Entity Creator") }}
+    <link rel="Shortcut icon" href="{{basePath('img/favicon.ico')}}" />
+    {% do headMeta().appendName('viewport', 'width=device-width, initial-scale=1.0') %}
+    {% do headMeta().appendHttpEquiv('X-UA-Compatible', 'IE=edge') %}
+    {{ headMeta() }}
+    {% do headLink().prependStylesheet(basePath() ~ '/css/main.css') %}
+    {% do headLink().prependStylesheet(basePath() ~ '/css/bootstrap-theme.min.css') %}
+    {% do headLink().prependStylesheet(basePath() ~ '/css/bootstrap.min.css') %}
+    {{ headLink() }}
+    {% do headScript().prependFile(basePath() ~ '/js/main.js') %}
+    {% do headScript().prependFile(basePath() ~ '/js/bootstrap.min.js') %}
+    {% do headScript().prependFile(basePath() ~  '/js/jquery.min.js') %}
+    {% do headScript().prependFile(basePath() ~ '/js/respond.min.js', 'text/javascript', {'conditional':'lt IE 9'}) %}
+    {% do headScript().prependFile(basePath() ~ '/js/html5shiv.js', 'text/javascript', {'conditional':'lt IE 9'}) %}
+    {{ headScript() }}
+</head>
+<body>
+<div class="container">
+    <h1>Doctrine Entity Creator</h1>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

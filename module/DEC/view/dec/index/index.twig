@@ -1,0 +1,162 @@
+{% extends "layout/layout" %}
+{% block content %}
+    <div id="result"></div>
+    <div id="ajaxLoading">
+        <img src="{{ basePath() ~ "/img/ajax-loader.gif" }}"/>
+    </div>
+    {% include "dec/index/alerts" %}
+    {% do form.prepare() %}
+    {{ form().openTag(form)|raw }}
+    <div class="form-group required">
+        <div class="col-sm-3">{{ formLabel(form.get('namespace')) }}</div>
+        <div class="col-sm-9">{{ formElement(form.get('namespace')) }}</div>
+    </div>
+    <div class="form-group required">
+        <div class="col-sm-3">{{ formLabel(form.get('classname')) }}</div>
+        <div class="col-sm-9">{{ formElement(form.get('classname')) }}</div>
+    </div>
+    <div class="form-group required">
+        <div class="col-sm-3">{{ formLabel(form.get('tablename')) }}</div>
+        <div class="col-sm-9">{{ formElement(form.get('tablename')) }}</div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">{{ formLabel(form.get('repositoryclass')) }}</div>
+        <div class="col-sm-9">{{ formElement(form.get('repositoryclass')) }}</div>
+    </div>
+
+    {% set indexCollections = form.get('indexes') %}
+    {% for collection in indexCollections %}
+        <div class="indexContainer" id="indCont0">
+            <div class="form-group">
+                <div class="col-sm-3 col-xs-12">{{ formLabel(collection.get('index')) }}</div>
+                <div class="col-sm-7 col-xs-12">{{ formElement(collection.get('index')) }}</div>
+                <div class="col-sm-2 col-xs-12">
+                    <button type="button" class="btn btn-default indexPlusButton">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default indexMinusButton">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('columns')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('columns')) }}</div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% set propertyCollections = form.get('entityProperties') %}
+    {% for collection in propertyCollections %}
+        <fieldset id="propertyFieldset0" class="entityPropertyFieldset">
+            <div class="col-sm-11">
+                <legend>{{ collection.getLabel() }}</legend>
+            </div>
+            <div class="col-sm-1 removePropertyButtonContainer">
+                <button type="button" class="btn btn-default removePropertyButton"
+                        data-toggle="popover" data-trigger="focus" data-placement="right"
+                        data-content="Cannot remove property marked as 'primary'. Mark another property as 'primary' and try again.">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('propertyName')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('propertyName')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('primary')) }}</div>
+                <div class="col-sm-2">{{ formElement(collection.get('primary')) }}</div>
+                <div id="strategySelect">
+                    <div class="col-sm-3">{{ formLabel(collection.get('strategy')) }}</div>
+                    <div class="col-sm-4">{{ formElement(collection.get('strategy')) }}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('column')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('column')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('columnType')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('columnType')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('nullable')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('nullable')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('default')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('default')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('unique')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('unique')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('unsigned')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('unsigned')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">{{ formLabel(collection.get('association')) }}</div>
+                <div class="col-sm-9">{{ formElement(collection.get('association')) }}</div>
+            </div>
+        </fieldset>
+    {% endfor %}
+
+    <div id="addPropertyContainer" class="form-group">
+        <div class="col-sm-4 col-xs-12">
+            <button class="btn btn-lg btn-primary" id="addEntityProperty">Add Entity Property</button>
+        </div>
+        <div class="submitButtonsDiv col-sm-8 col-xs-12">
+            {{ formElement(form.get('submit')) }}
+            <input type="submit" id="saveFile" name="saveFile" class="btn btn-lg btn-primary" value="Save as File">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">{{ formLabel(form.get('driver')) }}</div>
+        <div class="col-sm-6">{{ formElement(form.get('driver')) }}</div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">{{ formLabel(form.get('entityFilesNamespace')) }}</div>
+        <div class="col-sm-6">{{ formElement(form.get('entityFilesNamespace')) }}</div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">{{ formLabel(form.get('dbname')) }}</div>
+        <div class="col-sm-6">{{ formElement(form.get('dbname')) }}</div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">{{ formLabel(form.get('user')) }}</div>
+        <div class="col-sm-6">{{ formElement(form.get('user')) }}</div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">{{ formLabel(form.get('password')) }}</div>
+        <div class="col-sm-6">{{ formElement(form.get('password')) }}</div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-12 submitButtonsDiv ">
+            <input id="createSchema" type="submit" name="submit" class="btn btn-lg btn-primary" value="Create Tables">
+            <input id="getSchemaSql" type="submit" name="submit" class="btn btn-lg btn-primary" value="Schema Sql">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-6 ">
+            <label for="jsonSelectMenu">Edit existing entity: </label>
+        </div>
+        <div class="col-sm-6">
+            <select id="jsonSelectMenu" name="jsonSelectMenu" class="form-control"
+                    data-toggle="popover" data-trigger="focus" data-placement="right"
+                    data-content="No existing entity files to edit"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12 submitButtonsDiv ">
+            <button class="btn btn-lg btn-primary" id="populateForm">Edit Entity</button>
+        </div>
+    </div>
+
+
+
+
+    {{ form().closeTag() |raw }}
+{% endblock %}
